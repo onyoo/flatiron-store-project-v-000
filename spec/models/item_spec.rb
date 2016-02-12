@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, :type => :model do
   before do
-    @item = Item.first
+    @item = Item.create(title: "Tesla X", inventory: 25, price: 60000)
     Category.first.items << @item
   end
 
@@ -12,6 +12,7 @@ RSpec.describe Item, :type => :model do
 
   describe 'with line_items' do 
     before do 
+      binding.pry
       @item = Item.first
       @cart = Cart.create
       @line_item = @item.line_items.create(quantity: 1, cart: @cart)
