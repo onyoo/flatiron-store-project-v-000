@@ -39,6 +39,7 @@ group :test, :development do
   gem "pry"
   gem "guard-rspec", require: false
   gem "thin"
+  gem 'devise'
 end
 
 group :production do
