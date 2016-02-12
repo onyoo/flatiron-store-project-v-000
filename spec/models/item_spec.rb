@@ -12,7 +12,6 @@ RSpec.describe Item, :type => :model do
 
   describe 'with line_items' do 
     before do 
-      binding.pry
       @item = Item.first
       @cart = Cart.create
       @line_item = @item.line_items.create(quantity: 1, cart: @cart)
@@ -31,7 +30,7 @@ RSpec.describe Item, :type => :model do
     end
     it "only returns items with inventory" do
       expect(Item.available_items).to_not include(Item.first)
-      expect(Item.available_items.count).to eq(9)
+      expect(Item.available_items.count).to eq(10)
     end
   end
 end
