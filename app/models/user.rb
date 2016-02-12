@@ -8,4 +8,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def current_cart=(cart)
+    carts.unshift(cart)
+  end
+
+  def current_cart
+    carts[0]
+  end
+
 end
