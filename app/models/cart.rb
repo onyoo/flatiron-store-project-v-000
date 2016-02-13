@@ -21,4 +21,12 @@ class Cart < ActiveRecord::Base
     end
     new_item
   end
+
+  def checkout
+    line_items.each do |li|
+      li.item.inventory -= li.quantity
+      li.item.save
+    end
+    self.line_items.clear
+  end
 end
