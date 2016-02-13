@@ -5,7 +5,9 @@
         <% if user_signed_in? %>
           <div id="current_user">
             <li>Signed in as <%= current_user.email %></li>
+            <% if !current_user.current_cart.nil? %>
             <li><%= link_to 'Cart', cart_path(current_user) %></li>
+            <% end %>
           </div>
           <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
         <% else %>
