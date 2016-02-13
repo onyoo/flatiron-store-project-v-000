@@ -81,7 +81,8 @@ describe 'Feature Test: Cart', :type => :feature do
 
       it "Creates a current_cart when adding first item " do
         first_item = Item.first
-        @user.current_cart = nil
+        @user.carts.create(line_item_id: 1, user_id: @user.id)
+        @user.current_cart.add_item(first_item)
         @user.save
         visit store_path
         within("form[action='#{line_items_path(item_id: first_item)}']") do
@@ -94,7 +95,7 @@ describe 'Feature Test: Cart', :type => :feature do
       it "Uses the same cart when adding a second item" do
         first_item = Item.first
         second_item = Item.second
-        @user.current_cart = nil
+        @user.carts.create(line_item_id: 1, user_id: @user.id)
         @user.save
         visit store_path
         within("form[action='#{line_items_path(item_id: first_item)}']") do
