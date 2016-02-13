@@ -96,6 +96,7 @@ describe 'Feature Test: Cart', :type => :feature do
         first_item = Item.first
         second_item = Item.second
         @user.carts.create(line_item_id: 1, user_id: @user.id)
+        @user.current_cart = nil
         @user.save
         visit store_path
         within("form[action='#{line_items_path(item_id: first_item)}']") do

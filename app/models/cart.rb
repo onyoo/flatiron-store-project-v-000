@@ -30,4 +30,5 @@ class Cart < ActiveRecord::Base
     end
     self.line_items.clear
   end
+
 end
