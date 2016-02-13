@@ -20,7 +20,7 @@
 @import "bootstrap";
 /* Some Style from the Bootstrap Default Theme */
 body {
-  padding-top: 70px;
+  padding-top: 50px;
   padding-bottom: 30px;
 }
 
@@ -34,6 +34,17 @@ body {
   margin: 5px 0;
 }
 
-#header {
-  padding: 50px;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#navbar li {
+    float: left;
+    display: block;
+    padding: 15px;
+    margin-right: 50px;
+    font-size: 1.7em;
 }
