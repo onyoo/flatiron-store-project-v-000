@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def find_cart
-    current_cart ||= Cart.create(user_id: self.id)
+    !!current_cart ? current_cart : Cart.create(user_id: self.id)
   end
 
 end
