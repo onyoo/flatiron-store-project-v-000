@@ -3,6 +3,7 @@ class Cart < ActiveRecord::Base
   has_many :items, through: :line_items
   belongs_to :user
   belongs_to :order
+  has_one :status, through: :order
 
   def total
     line_items.collect do |line_item|
