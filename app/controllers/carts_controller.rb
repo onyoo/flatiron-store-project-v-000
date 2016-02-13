@@ -1,10 +1,15 @@
 class CartsController < ApplicationController
 
   def checkout
-    current_user.current_cart.checkout
-    current_user.carts.unshift nil
-    binding.pry
-    redirect_to cart_path(current_user.current_cart)
+    set_cart
+    @cart.checkout
+    Cart.destroy(@cart.id)
+    redirect_to cart_path(@cart)
   end
 
+  private
+  def set_cart
+    @cart = current_user.current_cart
+    redirect_to store_path if @cart.nil?
+  end
 end

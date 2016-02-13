@@ -14,7 +14,11 @@ class User < ActiveRecord::Base
   end
 
   def current_cart
-    carts[0]
+    if !self.carts[0].nil? && Cart.where(id: self.carts[0].id) != []
+      carts[0]
+    else
+      nil
+    end
   end
 
 end
