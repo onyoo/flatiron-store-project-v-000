@@ -65,16 +65,13 @@ describe 'Feature Test: Cart', :type => :feature do
       end
 
       it "Doesn't show Cart link when there is no current cart" do
-        cart = @user.carts.create(line_item_id: 1, user_id: @user.id)
-        first_item = Item.first
-        first_item.line_items.create(quantity: 1, cart: cart)
         @user.current_cart = nil
         visit store_path
         expect(page).to_not have_link("Cart")
       end
 
       it "Does show Cart link when there is a current cart" do
-        @user.current_cart = @user.carts.create(status: "submitted")
+        @user.current_cart = @user.carts.create(line_item_id: 1, user_id: @user.id)
         first_item = Item.first
         first_item.line_items.create(quantity: 1, cart: @user.current_cart)
         @user.save

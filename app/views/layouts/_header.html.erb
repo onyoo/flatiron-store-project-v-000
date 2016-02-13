@@ -5,7 +5,7 @@
         <% if user_signed_in? %>
           <div id="current_user">
             <li>Signed in as <%= current_user.email %></li>
-        <% if !!@cart %>
+        <% if !!current_user.current_cart %>
           <li> <%= link_to "Cart", cart_path(current_cart) %></li>
         <% end %>
           </div>
