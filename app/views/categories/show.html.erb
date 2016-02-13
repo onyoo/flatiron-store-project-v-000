@@ -1,7 +1,13 @@
-<h1><%= @category.title %></h1>
 
+<h1><%= @category.title %></h1>
 <ul>
 <% @category.items.each do |item| %>
     <li><%= link_to item.title, item_path(item) %></li>
+    <li> $<%= item.price.to_f/100 %> </li>
+    <li><%= form_for item do |f| %>
+          <%= f.hidden_field :id, value: item.id %>
+          <%= f.submit "Add to Cart" %>
+        <% end %>
+    </li>
 <% end %>
 </ul>
